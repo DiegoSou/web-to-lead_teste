@@ -9,8 +9,6 @@ with st.form("web_to_lead_form"):
     st.write('Testing salesforce web-to-lead form')
     oid = st.secrets["ORG_ID"]
     retURL = st.secrets["RETURN_URL"]
-    debug = st.secrets["IS_DEBUGGING"]
-    debugEmail = st.secrets["DEBUG_EMAIL"]
     
     # forms
     first_name = st.text_input("first_name", value="")
