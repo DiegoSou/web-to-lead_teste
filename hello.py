@@ -32,5 +32,5 @@ with st.form("web_to_lead_form"):
             "state": state
         }
         response = requests.post(st.secrets["WEB_TO_LEAD_URL"], json=body, headers={"Content-Type":"application/json", "charset": "UTF-8"})
-        st.write("submitted", response)
+        st.write("submitted", response.json())
        
