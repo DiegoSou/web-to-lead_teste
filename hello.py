@@ -31,7 +31,7 @@ with st.form("web_to_lead_form"):
         for key in body:
             requestUrl += "&" + key + "=" + body[key]
             
-        response = requests.post(requestUrl, json={})
+        response = requests.get(requestUrl)
         st.write("Submitted", response)
         st.write("Submitted", requestUrl)
 
