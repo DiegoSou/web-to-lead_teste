@@ -19,7 +19,7 @@ with st.form("web_to_lead_form"):
     # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
     if submitted:
-        requestUrl = st.secrets["WEB_TO_LEAD_URL"] + "&"
+        requestUrl = st.secrets["WEB_TO_LEAD_URL"]
         body = {
             "first_name": first_name,
             "last_name": last_name,
@@ -29,9 +29,10 @@ with st.form("web_to_lead_form"):
             "state": state
         }
         for key in body:
-            requestUrl += key + "=" + body[key]
+            requestUrl += "&" + key + "=" + body[key]
             
         response = requests.post(requestUrl, json={})
         st.write("Submitted", response)
+        st.write("Submitted", requestUrl)
 
        
