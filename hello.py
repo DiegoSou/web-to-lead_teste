@@ -24,8 +24,6 @@ with st.form("web_to_lead_form"):
         body = {
             "oid": oid,
             "retURL": retURL,
-            "debug": debug,
-            "debugEmail": debugEmail,
             "first_name": first_name,
             "last_name": last_name,
             "email": email,
