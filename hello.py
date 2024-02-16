@@ -7,8 +7,6 @@ st.write('Your public secret is: ' + st.secrets["PUBLIC_API_KEY"])
 
 with st.form("web_to_lead_form"):
     st.write('Testing salesforce web-to-lead form')
-    oid = st.secrets["ORG_ID"]
-    retURL = st.secrets["RETURN_URL"]
     
     # forms
     first_name = st.text_input("first_name", value="")
@@ -21,9 +19,8 @@ with st.form("web_to_lead_form"):
     # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
     if submitted:
+        requestUrl = st.secrets["WEB_TO_LEAD_URL"] + "&"
         body = {
-            "oid": oid,
-            "retURL": retURL,
             "first_name": first_name,
             "last_name": last_name,
             "email": email,
@@ -31,6 +28,10 @@ with st.form("web_to_lead_form"):
             "city": city,
             "state": state
         }
-        response = requests.post(st.secrets["WEB_TO_LEAD_URL"], json=body, headers={"Content-Type":"application/json", "charset": "UTF-8"})
+        for key in body:
+            requestUrl += key + "=" + body[key]
+            
+        response = requests.post(requestUrl, json={})
+        st.write("Submitted", response)
 
        
